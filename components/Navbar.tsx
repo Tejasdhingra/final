@@ -5,11 +5,10 @@ const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { name: 'Home', href: '#' },
-    { name: 'Philosophy', href: '#about' },
+    { name: 'Buy', href: '#buy-process' },
+    { name: 'Sell', href: '#showcase' },
     { name: 'Portfolio', href: '#search' },
-    { name: 'Valuation', href: '#collator' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'About', href: '#about' },
   ];
 
   return (
@@ -22,22 +21,41 @@ const Navbar: React.FC = () => {
             </span>
           </div>
           
-          <div className="hidden md:flex items-center space-x-10">
-            {navLinks.map((link) => (
+          <div className="hidden md:flex items-center space-x-6">
+            <div className="flex items-center space-x-8 mr-4 border-r border-neutral-100 pr-8">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="text-[10px] font-bold text-neutral-500 hover:text-[#1a1a1a] transition-colors uppercase tracking-[0.2em]"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
+            
+            <div className="flex items-center space-x-3">
               <a
-                key={link.name}
-                href={link.href}
-                className="text-[10px] font-bold text-neutral-500 hover:text-[#1a1a1a] transition-colors uppercase tracking-[0.2em]"
+                href="#lestimate"
+                className="group flex items-center space-x-2 bg-[#fcfaf7] border border-[#c5a059] px-4 py-2.5 transition-all hover:bg-[#c5a059]"
               >
-                {link.name}
+                <span className="text-[9px] font-bold tracking-[0.2em] text-[#c5a059] uppercase group-hover:text-white transition-colors">LESTIMATE</span>
               </a>
-            ))}
-            <a
-              href="https://wa.me/91XXXXXXXXXX"
-              className="bg-[#1a1a1a] text-white px-8 py-3 rounded-none text-[10px] font-bold tracking-[0.2em] hover:bg-[#c5a059] transition-all border border-[#1a1a1a]"
-            >
-              ENQUIRE
-            </a>
+              
+              <a
+                href="#showcase"
+                className="group flex items-center space-x-2 bg-[#1a1a1a] border border-[#1a1a1a] px-4 py-2.5 transition-all hover:bg-transparent"
+              >
+                <span className="text-[9px] font-bold tracking-[0.2em] text-white uppercase group-hover:text-[#1a1a1a] transition-colors">SHOWCASE</span>
+              </a>
+
+              <a
+                href="https://wa.me/91XXXXXXXXXX"
+                className="bg-[#c5a059] text-white px-6 py-2.5 rounded-none text-[9px] font-bold tracking-[0.2em] hover:bg-white hover:text-[#c5a059] transition-all border border-[#c5a059]"
+              >
+                CONNECT
+              </a>
+            </div>
           </div>
 
           <div className="md:hidden flex items-center">
@@ -69,6 +87,10 @@ const Navbar: React.FC = () => {
               {link.name}
             </a>
           ))}
+          <div className="pt-4 flex flex-col space-y-3">
+            <a href="#lestimate" onClick={() => setIsOpen(false)} className="text-xs font-bold tracking-[0.2em] text-[#c5a059] uppercase">Lestimate</a>
+            <a href="#showcase" onClick={() => setIsOpen(false)} className="text-xs font-bold tracking-[0.2em] text-[#1a1a1a] uppercase">Latitude Showcase</a>
+          </div>
         </div>
       )}
     </nav>

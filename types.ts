@@ -14,11 +14,17 @@ export interface Property {
   brochureUrl: string;
 }
 
-export interface Agent {
+export interface Testimonial {
+  id: string;
   name: string;
-  role: string;
-  image: string;
-  specialization: string;
+  location: string;
+  text: string;
+  rating: number;
+}
+
+export interface FAQ {
+  question: string;
+  answer: string;
 }
 
 export interface Service {
