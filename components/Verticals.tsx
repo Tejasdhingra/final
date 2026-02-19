@@ -23,7 +23,8 @@ const Verticals: React.FC = () => {
     {
       title: 'Development',
       desc: 'Building the best builder floors in the capital. Radically transparent construction with boutique design.',
-      tags: ['Bespoke', 'Luxury', 'Boutique']
+      tags: ['Bespoke', 'Luxury', 'Boutique'],
+      status: 'COMING SOON'
     },
     {
       title: 'Plots',
@@ -37,13 +38,19 @@ const Verticals: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-24">
           <span className="text-[#c5a059] font-bold uppercase tracking-[0.3em] text-[10px] mb-4 block">Our Verticals</span>
-          <h2 className="text-4xl font-bold serif text-[#1a1a1a]">Transforming Home Buying</h2>
+          <h2 className="text-4xl font-bold serif text-[#1a1a1a]">Transforming Capital Real Estate</h2>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {verticals.map((v, i) => (
-            <div key={i} className="bg-white p-10 border border-neutral-100 hover:border-[#c5a059] transition-all group relative overflow-hidden flex flex-col justify-between h-full shadow-sm">
+            <div key={i} className={`bg-white p-10 border border-neutral-100 hover:border-[#c5a059] transition-all group relative overflow-hidden flex flex-col justify-between h-full shadow-sm ${v.status ? 'opacity-80' : ''}`}>
               <div>
-                {v.checks && <span className="inline-block bg-[#c5a059] text-white text-[8px] font-bold px-3 py-1 uppercase tracking-widest mb-6">{v.checks}</span>}
+                <div className="flex justify-between items-start mb-6">
+                  {v.checks ? (
+                    <span className="inline-block bg-[#c5a059] text-white text-[8px] font-bold px-3 py-1 uppercase tracking-widest">{v.checks}</span>
+                  ) : v.status ? (
+                    <span className="inline-block bg-[#1a1a1a] text-white text-[8px] font-bold px-3 py-1 uppercase tracking-widest">{v.status}</span>
+                  ) : <div />}
+                </div>
                 <h3 className="text-xl font-bold serif mb-6 text-[#1a1a1a]">{v.title}</h3>
                 <p className="text-neutral-500 font-light text-sm leading-relaxed mb-6">{v.desc}</p>
                 {v.highlight && <p className="text-[#c5a059] font-bold text-[10px] tracking-widest uppercase mb-4">{v.highlight}</p>}

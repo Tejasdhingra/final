@@ -81,24 +81,24 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Buying Process: Dream Home in 3 Steps */}
+      {/* Buying Process: LAT Framework */}
       <section id="buy-process" className="py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
             <div className="max-w-2xl">
-              <span className="text-[#c5a059] font-bold uppercase tracking-[0.3em] text-[10px] mb-4 block">Buying Your Dream Home</span>
-              <h2 className="text-5xl font-bold serif leading-tight text-[#1a1a1a]">3 Simple Steps.</h2>
+              <span className="text-[#c5a059] font-bold uppercase tracking-[0.3em] text-[10px] mb-4 block">The Latitude Framework</span>
+              <h2 className="text-5xl font-bold serif leading-tight text-[#1a1a1a]">Asset Stewardship in <br/>3 Simple Steps.</h2>
             </div>
-            <p className="text-neutral-500 font-light max-w-sm mb-2 italic">Institutionalized speed meets bespoke care.</p>
+            <p className="text-neutral-500 font-light max-w-sm mb-2 italic">Precision-engineered acquisition.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-16">
             {[
-              { num: '01', title: 'Find It', desc: 'Identify institutional-grade assets in Delhi NCR through extensive tech-driven filters and 300+ rigorous checks.' },
-              { num: '02', title: 'Tour It', desc: 'Curated walkthroughs assessing technical parameters—air quality index, noise mapping, and Vastu compliance.' },
-              { num: '03', title: 'Secure It', desc: 'Seamless acquisition backed by data-driven pricing models and 100% legally vetted documentation.' }
+              { letter: 'L', title: 'Look', desc: 'Browse our handpicked portfolio of elite residences, filtered through 300+ rigorous technical and legal checks.' },
+              { letter: 'A', title: 'Access', desc: 'Gain deep-dive access to asset technicals, air quality mapping, and expert-led spatial tours.' },
+              { letter: 'T', title: 'Transact', desc: 'Seamlessly close deals with data-driven pricing models and 100% legally vetted documentation.' }
             ].map((step) => (
-              <div key={step.num} className="group relative pt-12 border-t border-neutral-100">
-                <span className="absolute top-0 left-0 -translate-y-1/2 text-[100px] font-bold serif text-[#c5a059] opacity-10 group-hover:opacity-100 transition-opacity duration-700">{step.num}</span>
+              <div key={step.letter} className="group relative pt-12 border-t border-neutral-100">
+                <span className="absolute top-0 left-0 -translate-y-1/2 text-[100px] font-bold serif text-[#c5a059] opacity-10 group-hover:opacity-100 transition-opacity duration-700">{step.letter}</span>
                 <h3 className="text-2xl font-bold mb-6 serif uppercase tracking-widest text-[#1a1a1a]">{step.title}</h3>
                 <p className="text-neutral-500 font-light leading-relaxed text-sm">{step.desc}</p>
               </div>
@@ -198,8 +198,8 @@ const App: React.FC = () => {
               <h2 className="text-5xl font-bold serif mb-10 leading-tight">Bridging the Gap in <br/>Delhi NCR.</h2>
               <div className="space-y-8 text-neutral-500 font-light leading-relaxed">
                 <p className="italic text-lg text-[#1a1a1a] border-l-4 border-[#c5a059] pl-6">"Real estate in the capital has long been starved of professional stewardship. We founded Latitude to replace manual hurdles with tech-driven efficiency."</p>
-                <p>Tejas Dhingra, following his sister Tanisa's path, joined Google in 2020 after graduating from Delhi University. Apart from being a high-impact professional, Tejas is an International Show Jumper, a two-time National Champion (2024-2025), and represented India at the Asian Games in 2023.</p>
-                <p>Mentored by industry veterans like <span className="text-[#1a1a1a] font-bold">Mr. Vishal Gupta (MD, Ashiana Housing)</span> and <span className="text-[#1a1a1a] font-bold">Mr. Amar Sarin (MD, TARC)</span>, Latitude re-engineers how the capital buys and sells homes through trust and transparency.</p>
+                <p>Tejas Dhingra joined Google in 2020 after graduating from Delhi University. Apart from being a high-impact professional, Tejas is an International Show Jumper, a two-time National Champion (2024-2025), and represented India at the Asian Games in 2023.</p>
+                <p>Mentored by industry veterans like <span className="text-[#1a1a1a] font-bold">Mr. Vishal Gupta (MD, Ashiana Housing)</span> and <span className="text-[#1a1a1a] font-bold">Mr. Amar Sarin (MD, TARC)</span>, Latitude re-engineers how the capital buys and sells assets through trust and transparency.</p>
               </div>
               <div className="mt-16 pt-8 border-t border-neutral-100 flex gap-12">
                 <div>
