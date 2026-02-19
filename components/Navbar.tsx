@@ -5,10 +5,11 @@ const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { name: 'Buy', href: '#buy-process' },
-    { name: 'Sell', href: '#showcase' },
     { name: 'Portfolio', href: '#search' },
+    { name: 'NRI Advisory', href: '#nri' },
+    { name: 'Sell', href: '#showcase' },
     { name: 'About', href: '#about' },
+    { name: 'Contact', href: '#contact-form' },
   ];
 
   const contactPhone = "+919811199432";
@@ -18,7 +19,7 @@ const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20">
           <div className="flex items-center">
-            <span className="text-2xl font-bold tracking-[0.3em] serif text-[#1a1a1a] uppercase">
+            <span className="text-2xl font-bold tracking-[0.3em] serif text-[#1a1a1a] uppercase cursor-pointer" onClick={() => window.scrollTo(0,0)}>
               LATITUDE
             </span>
           </div>
@@ -42,13 +43,6 @@ const Navbar: React.FC = () => {
                 className="group flex items-center space-x-2 bg-[#fcfaf7] border border-[#c5a059] px-4 py-2.5 transition-all hover:bg-[#c5a059]"
               >
                 <span className="text-[9px] font-bold tracking-[0.2em] text-[#c5a059] uppercase group-hover:text-white transition-colors">LESTIMATE</span>
-              </a>
-              
-              <a
-                href="#showcase"
-                className="group flex items-center space-x-2 bg-[#1a1a1a] border border-[#1a1a1a] px-4 py-2.5 transition-all hover:bg-transparent"
-              >
-                <span className="text-[9px] font-bold tracking-[0.2em] text-white uppercase group-hover:text-[#1a1a1a] transition-colors">SHOWCASE</span>
               </a>
 
               <a
@@ -91,7 +85,6 @@ const Navbar: React.FC = () => {
           ))}
           <div className="pt-4 flex flex-col space-y-3">
             <a href="#lestimate" onClick={() => setIsOpen(false)} className="text-xs font-bold tracking-[0.2em] text-[#c5a059] uppercase">Lestimate</a>
-            <a href="#showcase" onClick={() => setIsOpen(false)} className="text-xs font-bold tracking-[0.2em] text-[#1a1a1a] uppercase">Latitude Showcase</a>
             <a href={`https://wa.me/${contactPhone.replace('+', '')}`} className="text-xs font-bold tracking-[0.2em] text-[#c5a059] uppercase">Connect on WhatsApp</a>
           </div>
         </div>

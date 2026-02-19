@@ -12,6 +12,18 @@ export interface Property {
   lat: number;
   lng: number;
   brochureUrl: string;
+  // Detailed fields for high-end advisory
+  priceRange?: string;
+  sizeRange?: string;
+  possession?: string;
+  developer?: string;
+  landArea?: string;
+  towers?: string;
+  units?: string;
+  investmentThesis?: string[];
+  amenities?: string[];
+  locationAdvantages?: string[];
+  priceEstimates?: { type: string; size: string; estimate: string }[];
 }
 
 export interface Testimonial {
