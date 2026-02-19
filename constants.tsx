@@ -4,12 +4,12 @@ import { Property, Testimonial, FAQ, Service } from './types';
 export const PROPERTIES: Property[] = [
   {
     id: '1',
-    name: 'The Aralias',
-    location: 'DLF Phase 5, Gurgaon',
-    price: '₹12 Cr+',
+    name: 'DLF The Camellias',
+    location: 'Sector 42, Golf Course Road, Gurgaon',
+    price: '₹60 Cr - ₹100 Cr+',
     bedrooms: 4,
-    layout: '4BHK + Utility',
-    image: 'https://images.unsplash.com/photo-1600566753190-17f0bb2a6c3e?auto=format&fit=crop&q=80&w=800',
+    layout: 'Super Luxury Apartment',
+    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=1200',
     category: 'Residential',
     subCategory: 'Secondary Market',
     lat: 28.4595,
@@ -18,28 +18,28 @@ export const PROPERTIES: Property[] = [
   },
   {
     id: '2',
-    name: 'TARC Ishva',
-    location: 'Sector 63A, Gurgaon',
-    price: '₹4.5 Cr onwards',
-    bedrooms: 3,
-    layout: '3BHK Luxury',
-    image: 'https://images.unsplash.com/photo-1600585154526-990dcea4db0d?auto=format&fit=crop&q=80&w=800',
+    name: 'TARC Kailasa',
+    location: 'Kirti Nagar, New Delhi',
+    price: '₹9 Cr - ₹15 Cr',
+    bedrooms: 3.5,
+    layout: '3.5 & 4.5 BHK Luxury',
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200',
     category: 'Residential',
     subCategory: 'Under Construction',
-    lat: 28.4125,
-    lng: 77.0850,
+    lat: 28.6500,
+    lng: 77.1300,
     brochureUrl: '#'
   },
   {
     id: '3',
-    name: 'The Camellias',
-    location: 'Golf Course Road, Gurgaon',
-    price: '₹25 Cr+',
+    name: 'DLF Magnolias',
+    location: 'Sector 42, Golf Course Road, Gurgaon',
+    price: '₹35 Cr - ₹55 Cr',
     bedrooms: 4,
-    layout: 'Ultra Luxury Penthouse',
-    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800',
+    layout: 'Luxury Secondary',
+    image: 'https://images.unsplash.com/photo-1600607687960-ce8746a6f4a0?auto=format&fit=crop&q=80&w=1200',
     category: 'Residential',
-    subCategory: 'Handpicked Secondary',
+    subCategory: 'Handpicked Assets',
     lat: 28.4600,
     lng: 77.0900,
     brochureUrl: '#'
@@ -47,10 +47,10 @@ export const PROPERTIES: Property[] = [
 ];
 
 export const SERVICES: Service[] = [
-  { title: 'Paperwork', description: 'End-to-end documentation management and seamless registration processes.', icon: 'FileText' },
-  { title: 'Legal Advice', description: '100% Legally cleared titles with extensive vetting by veteran real estate lawyers.', icon: 'ShieldCheck' },
-  { title: 'Interiors', description: 'Renovating to our high standards of quality and sophisticated aesthetics.', icon: 'Layout' },
-  { title: 'Vastu', description: 'Expert spatial harmony consultation for peace and prosperity in your new home.', icon: 'Compass' }
+  { title: 'Paperwork', description: 'End-to-end documentation management and seamless registration processes.', icon: 'DOCS' },
+  { title: 'Legal Advice', description: '100% Legally cleared titles with extensive vetting by veteran real estate lawyers.', icon: 'LAW' },
+  { title: 'Interiors', description: 'Renovating to our high standards of quality and sophisticated aesthetics.', icon: 'DESIGN' },
+  { title: 'Vastu', description: 'Expert spatial harmony consultation for peace and prosperity in your new home.', icon: 'VASTU' }
 ];
 
 export const TESTIMONIALS: Testimonial[] = [

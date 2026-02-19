@@ -11,12 +11,14 @@ const Navbar: React.FC = () => {
     { name: 'About', href: '#about' },
   ];
 
+  const contactPhone = "+919811199432";
+
   return (
     <nav className="fixed top-0 w-full z-50 bg-white border-b border-neutral-100 backdrop-blur-md bg-white/90">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20">
           <div className="flex items-center">
-            <span className="text-2xl font-bold tracking-[0.3em] serif text-[#1a1a1a]">
+            <span className="text-2xl font-bold tracking-[0.3em] serif text-[#1a1a1a] uppercase">
               LATITUDE
             </span>
           </div>
@@ -50,7 +52,7 @@ const Navbar: React.FC = () => {
               </a>
 
               <a
-                href="https://wa.me/91XXXXXXXXXX"
+                href={`https://wa.me/${contactPhone.replace('+', '')}`}
                 className="bg-[#c5a059] text-white px-6 py-2.5 rounded-none text-[9px] font-bold tracking-[0.2em] hover:bg-white hover:text-[#c5a059] transition-all border border-[#c5a059]"
               >
                 CONNECT
@@ -90,6 +92,7 @@ const Navbar: React.FC = () => {
           <div className="pt-4 flex flex-col space-y-3">
             <a href="#lestimate" onClick={() => setIsOpen(false)} className="text-xs font-bold tracking-[0.2em] text-[#c5a059] uppercase">Lestimate</a>
             <a href="#showcase" onClick={() => setIsOpen(false)} className="text-xs font-bold tracking-[0.2em] text-[#1a1a1a] uppercase">Latitude Showcase</a>
+            <a href={`https://wa.me/${contactPhone.replace('+', '')}`} className="text-xs font-bold tracking-[0.2em] text-[#c5a059] uppercase">Connect on WhatsApp</a>
           </div>
         </div>
       )}

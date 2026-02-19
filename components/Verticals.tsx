@@ -49,9 +49,9 @@ const Verticals: React.FC = () => {
                     <span className="inline-block bg-[#c5a059] text-white text-[8px] font-bold px-3 py-1 uppercase tracking-widest">{v.checks}</span>
                   ) : v.status ? (
                     <span className="inline-block bg-[#1a1a1a] text-white text-[8px] font-bold px-3 py-1 uppercase tracking-widest">{v.status}</span>
-                  ) : <div />}
+                  ) : <div className="h-6" />}
                 </div>
-                <h3 className="text-xl font-bold serif mb-6 text-[#1a1a1a]">{v.title}</h3>
+                <h3 className="text-xl font-bold serif mb-6 text-[#1a1a1a] uppercase tracking-wider">{v.title}</h3>
                 <p className="text-neutral-500 font-light text-sm leading-relaxed mb-6">{v.desc}</p>
                 {v.highlight && <p className="text-[#c5a059] font-bold text-[10px] tracking-widest uppercase mb-4">{v.highlight}</p>}
                 {v.footer && <p className="text-neutral-400 text-[10px] font-light italic mb-8">{v.footer}</p>}

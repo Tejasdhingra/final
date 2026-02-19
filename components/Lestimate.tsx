@@ -9,13 +9,25 @@ const Lestimate: React.FC = () => {
     propertyType: '',
     bedrooms: '',
     age: '',
+    ageUnit: 'Years',
     email: '',
     phone: ''
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert("Valuation request received for " + formData.location + ". Our analysts will contact you shortly.");
+    const subject = `Lestimate Request: ${formData.location}`;
+    const body = `
+      Location: ${formData.location}
+      Size: ${formData.size} ${formData.unit}
+      Configuration: ${formData.bedrooms} BHK ${formData.propertyType}
+      Age: ${formData.age} ${formData.ageUnit}
+      Phone: ${formData.phone}
+      Email: ${formData.email}
+    `;
+    
+    alert(`Thank you for your request. Our intelligence engine is preparing your valuation report for ${formData.location}. A copy will be sent to tejasdhingra28@gmail.com for review.`);
+    window.location.href = `mailto:tejasdhingra28@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
   return (
@@ -26,10 +38,10 @@ const Lestimate: React.FC = () => {
       
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <div className="inline-block bg-[#c5a059] text-white px-3 py-1 text-[9px] font-bold tracking-[0.3em] uppercase mb-4">Market Intelligence Tool</div>
+          <div className="inline-block bg-[#c5a059] text-white px-3 py-1 text-[9px] font-bold tracking-[0.3em] uppercase mb-4 italic">Latitude Proprietary Tool</div>
           <h2 className="text-5xl font-bold serif mb-4 italic">Lestimate</h2>
           <p className="text-neutral-400 max-w-2xl mx-auto uppercase tracking-widest text-[10px] font-bold">
-            Know Your Home's Real-Time Market Value • Data-Backed Intelligence
+            Know Your Home's Real-Time Market Value | Data-Backed Intelligence
           </p>
         </div>
         
@@ -38,6 +50,7 @@ const Lestimate: React.FC = () => {
             <label className="block">
               <span className="text-[10px] uppercase tracking-widest text-[#c5a059] font-bold">Exact Location</span>
               <input 
+                required
                 type="text" 
                 placeholder="DLF Phase / Sector / Society"
                 className="mt-2 block w-full bg-transparent border-b border-white/20 py-3 focus:border-[#c5a059] outline-none transition-colors text-sm font-light placeholder-neutral-600"
@@ -90,20 +103,31 @@ const Lestimate: React.FC = () => {
                   onChange={(e) => setFormData({...formData, bedrooms: e.target.value})}
                 />
               </label>
-              <label className="block">
-                <span className="text-[10px] uppercase tracking-widest text-neutral-400 font-bold">Property Age</span>
-                <input 
-                  type="number" 
-                  placeholder="Years"
-                  className="mt-2 block w-full bg-transparent border-b border-white/20 py-3 focus:border-[#c5a059] outline-none transition-colors text-sm font-light"
-                  onChange={(e) => setFormData({...formData, age: e.target.value})}
-                />
-              </label>
+              <div className="grid grid-cols-2 gap-2 items-end">
+                <label className="block">
+                  <span className="text-[10px] uppercase tracking-widest text-neutral-400 font-bold">Age</span>
+                  <input 
+                    type="number" 
+                    placeholder="Val"
+                    className="mt-2 block w-full bg-transparent border-b border-white/20 py-3 focus:border-[#c5a059] outline-none transition-colors text-sm font-light"
+                    onChange={(e) => setFormData({...formData, age: e.target.value})}
+                  />
+                </label>
+                <select 
+                  className="block w-full bg-transparent border-b border-white/20 py-3 focus:border-[#c5a059] outline-none transition-colors text-[9px] font-bold uppercase tracking-widest cursor-pointer"
+                  value={formData.ageUnit}
+                  onChange={(e) => setFormData({...formData, ageUnit: e.target.value})}
+                >
+                  <option value="Years" className="bg-[#1a1a1a]">Years</option>
+                  <option value="Months" className="bg-[#1a1a1a]">Months</option>
+                </select>
+              </div>
             </div>
 
             <label className="block">
               <span className="text-[10px] uppercase tracking-widest text-neutral-400 font-bold">Contact No.</span>
               <input 
+                required
                 type="tel" 
                 placeholder="+91"
                 className="mt-2 block w-full bg-transparent border-b border-white/20 py-3 focus:border-[#c5a059] outline-none transition-colors text-sm font-light"
@@ -114,6 +138,7 @@ const Lestimate: React.FC = () => {
             <label className="block">
               <span className="text-[10px] uppercase tracking-widest text-neutral-400 font-bold">Email</span>
               <input 
+                required
                 type="email" 
                 placeholder="Professional Email"
                 className="mt-2 block w-full bg-transparent border-b border-white/20 py-3 focus:border-[#c5a059] outline-none transition-colors text-sm font-light"
@@ -127,7 +152,7 @@ const Lestimate: React.FC = () => {
               type="submit"
               className="w-full bg-[#c5a059] hover:bg-white hover:text-[#1a1a1a] text-white font-bold py-5 tracking-[0.4em] transition-all uppercase text-[10px] shadow-2xl"
             >
-              Calculate Valuation
+              Analyze Value
             </button>
           </div>
         </form>

@@ -1,7 +1,16 @@
 {
-  "name": "LATITUDE- F",
-  "description": "A premium real estate advisory in Delhi NCR focused on trust, transparency, and high-end residential and commercial projects.",
+  "name": "LATITUDE Realty",
+  "description": "Exclusive real estate advisory for Delhi NCR. Specializing in luxury residential and high-yield commercial assets in Gurgaon and Delhi. Founded by Tejas Dhingra.",
+  "domain": "latituderealty.in",
   "requestFramePermissions": [
     "geolocation"
+  ],
+  "keywords": [
+    "Real Estate Delhi NCR",
+    "Luxury Homes Gurgaon",
+    "Tejas Dhingra",
+    "Latitude Realty",
+    "Lestimate",
+    "Commercial Property Delhi"
   ]
 }
