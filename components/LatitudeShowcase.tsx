@@ -30,9 +30,12 @@ const LatitudeShowcase: React.FC = () => {
               ))}
             </div>
 
-            <button className="mt-16 w-full md:w-auto px-12 py-5 bg-[#c5a059] text-white font-bold uppercase tracking-[0.3em] text-[10px] hover:bg-white hover:text-[#1a1a1a] transition-all">
+            <a 
+              href="mailto:tejasdhingra28@gmail.com?subject=Latitude Showcase Inquiry"
+              className="mt-16 inline-block w-full md:w-auto px-12 py-5 bg-[#c5a059] text-white font-bold uppercase tracking-[0.3em] text-[10px] hover:bg-white hover:text-[#1a1a1a] transition-all text-center"
+            >
               Start Your Showcase
-            </button>
+            </a>
           </div>
           <div className="relative">
             <div className="absolute -top-10 -left-10 w-40 h-40 border-l border-t border-[#c5a059]/30"></div>

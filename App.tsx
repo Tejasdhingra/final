@@ -11,24 +11,26 @@ import { Property } from './types';
 
 const App: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [searchResult, setSearchResult] = useState<any>(null);
-  const [isSearching, setIsSearching] = useState(false);
   const [selectedProperty, setSelectedProperty] = useState<Property | null>(null);
 
   const contactPhone = "+919811199432";
   const contactEmail = "tejasdhingra28@gmail.com";
 
-  const handleSearch = async (e: React.FormEvent) => {
+  const filteredProperties = PROPERTIES.filter(p => {
+    const query = searchQuery.toLowerCase();
+    return (
+      p.name.toLowerCase().includes(query) ||
+      p.developer?.toLowerCase().includes(query) ||
+      p.location.toLowerCase().includes(query) ||
+      p.layout.toLowerCase().includes(query)
+    );
+  });
+
+  const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!searchQuery) return;
-    setIsSearching(true);
-    try {
-      const result = await searchProperties(searchQuery);
-      setSearchResult(result);
-    } catch (err) {
-      console.error("Search failed", err);
-    } finally {
-      setIsSearching(false);
+    const element = document.getElementById('search');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -96,7 +98,7 @@ const App: React.FC = () => {
               {/* Investment Thesis Section */}
               <div className="mb-12">
                 <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase mb-6 text-[#c5a059]">Investment Thesis</h4>
-                <div className="grid md:grid-cols-1 gap-4">
+                <div className="space-y-4">
                   {selectedProperty.investmentThesis?.map((item, idx) => (
                     <div key={idx} className="flex items-start gap-4 text-sm font-light leading-relaxed text-neutral-600">
                       <span className="mt-1.5 w-1.5 h-1.5 bg-[#c5a059] flex-shrink-0"></span>
@@ -163,54 +165,61 @@ const App: React.FC = () => {
             alt="Luxury Real Estate Delhi NCR"
           />
         </div>
-        <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
+        <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
           <span className="text-[#c5a059] text-[10px] font-bold tracking-[0.5em] uppercase mb-6 block animate-pulse">Delhi NCR's Premier Realty Advisory</span>
-          <h1 className="text-7xl md:text-9xl font-bold mb-8 leading-tight serif tracking-tighter uppercase">
-            LATITUDE
+          <h1 className="text-7xl md:text-9xl font-bold mb-4 leading-tight serif tracking-tighter uppercase text-white">
+            Latitude
           </h1>
-          <p className="text-[11px] font-light mb-16 tracking-[0.4em] uppercase opacity-70">
-            Trust Transparency Efficiency
+          <p className="text-[#c5a059] text-sm md:text-lg font-light mb-16 tracking-[0.3em] uppercase">
+            Giving Real Estate Its Coordinates Back
           </p>
           
           <form onSubmit={handleSearch} className="max-w-2xl mx-auto relative group">
             <div className="flex bg-white/5 backdrop-blur-md border border-white/20 overflow-hidden">
               <input 
                 type="text" 
-                placeholder="Search by location or project (e.g. Golf Course Road)..."
+                placeholder="Search by project, developer, location or config (e.g. 4 BHK)..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full px-8 py-6 text-sm outline-none bg-transparent transition-all tracking-wider font-light"
+                className="w-full px-8 py-6 text-sm outline-none bg-transparent transition-all tracking-wider font-light text-white"
               />
               <button 
                 type="submit"
-                disabled={isSearching}
-                className="px-10 py-6 bg-[#c5a059] text-white font-bold uppercase tracking-[0.2em] text-[10px] hover:bg-white hover:text-[#1a1a1a] transition-all disabled:opacity-50"
+                className="px-10 py-6 bg-[#c5a059] text-white font-bold uppercase tracking-[0.2em] text-[10px] hover:bg-white hover:text-[#1a1a1a] transition-all"
               >
-                {isSearching ? 'ANALYZING...' : 'SEARCH'}
+                SEARCH
               </button>
             </div>
           </form>
         </div>
       </section>
 
-      {/* Buying Process */}
+      {/* Hook Line Divider */}
+      <section className="py-24 bg-[#fcfaf7] border-y border-neutral-100">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-5xl font-bold serif leading-tight text-[#1a1a1a] uppercase tracking-tight">
+            Structured Real Estate. <br className="hidden md:block"/>No Noise. No Pressure. <br className="hidden md:block"/>Just Clarity.
+          </h2>
+        </div>
+      </section>
+
+      {/* The LAT Way Section */}
       <section id="buy-process" className="py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
             <div className="max-w-3xl">
               <span className="text-[#c5a059] font-bold uppercase tracking-[0.3em] text-[10px] mb-4 block italic">The LAT way</span>
-              <h2 className="text-5xl font-bold serif leading-tight text-[#1a1a1a]">Transforming buying and selling <br/>real estate in 3 steps.</h2>
+              <h2 className="text-5xl font-bold serif leading-tight text-[#1a1a1a]">The LAT Way</h2>
             </div>
-            <p className="text-neutral-500 font-light max-w-sm mb-2 italic">Precision-engineered stewardship for HNIs.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-16">
             {[
-              { letter: 'L', title: 'Look', desc: 'Browse our handpicked portfolio of elite residences, filtered through 300+ rigorous technical and legal checks.' },
-              { letter: 'A', title: 'Access', desc: 'Gain deep-dive access to asset technicals, air quality mapping, and expert-led spatial tours.' },
-              { letter: 'T', title: 'Transact', desc: 'Seamlessly close deals with data-driven pricing models and 100% legally vetted documentation.' }
-            ].map((step) => (
-              <div key={step.letter} className="group relative pt-12 border-t border-neutral-100">
-                <span className="absolute top-0 left-0 -translate-y-1/2 text-[100px] font-bold serif text-[#c5a059] opacity-10 group-hover:opacity-100 transition-opacity duration-700">{step.letter}</span>
+              { letter: 'L', title: 'Logic', desc: 'Decisions backed by structured thinking, not pressure.' },
+              { letter: 'A', title: 'Alignment', desc: 'Ensuring buyer, seller, opportunity, and intent are in sync.' },
+              { letter: 'T', title: 'Transaction with Transparency', desc: 'Clear numbers, clear risks, clear expectations.' }
+            ].map((step, idx) => (
+              <div key={idx} className="group relative pt-12 border-t border-neutral-100 text-center md:text-left">
+                <span className="block text-6xl font-bold serif text-[#c5a059] mb-6 opacity-40 group-hover:opacity-100 transition-opacity duration-500">{step.letter}</span>
                 <h3 className="text-2xl font-bold mb-6 serif uppercase tracking-widest text-[#1a1a1a]">{step.title}</h3>
                 <p className="text-neutral-500 font-light leading-relaxed text-sm">{step.desc}</p>
               </div>
@@ -279,7 +288,7 @@ const App: React.FC = () => {
             </div>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-12">
-            {PROPERTIES.map((p) => (
+            {filteredProperties.map((p) => (
               <PropertyCard key={p.id} property={p} onSelect={() => setSelectedProperty(p)} />
             ))}
           </div>
@@ -347,21 +356,27 @@ const App: React.FC = () => {
       {/* About Section */}
       <section id="about" className="py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-             <div className="text-center">
-                <span className="text-[#c5a059] font-bold uppercase tracking-[0.3em] text-[10px] mb-6 block italic text-center">Our Vision</span>
-                <h2 className="text-5xl font-bold serif mb-10 leading-tight text-[#1a1a1a] text-center">Bridging the Gap in <br/>Delhi NCR.</h2>
-                <div className="space-y-8 text-neutral-500 font-light leading-relaxed">
-                  <p className="italic text-lg text-[#1a1a1a] border-l-4 border-[#c5a059] pl-6 text-left max-w-2xl mx-auto">"Real estate in the capital has long been starved of professional stewardship. We founded Latitude to replace manual hurdles with tech-driven efficiency."</p>
-                  <div className="space-y-6 text-left max-w-2xl mx-auto">
-                    <p>Tejas Dhingra joined Google in 2020 after graduating from Delhi University. Apart from being a high-impact professional, Tejas is an International Show Jumper, a two-time National Champion (2024-2025), and represented India at the Asian Games in 2023.</p>
-                    <p>Mentored by industry veterans like <span className="text-[#1a1a1a] font-bold">Mr. Vishal Gupta (MD, Ashiana Housing)</span> and <span className="text-[#1a1a1a] font-bold">Mr. Amar Sarin (MD, TARC)</span>, Latitude re-engineers how the capital buys and sells assets through trust and transparency.</p>
+          <div className="max-w-4xl mx-auto">
+             <div className="text-center mb-16">
+                <span className="text-[#c5a059] font-bold uppercase tracking-[0.3em] text-[10px] mb-6 block italic">Our Ethos</span>
+                <h2 className="text-5xl font-bold serif mb-10 leading-tight text-[#1a1a1a]">A Founder's Perspective</h2>
+             </div>
+             <div className="space-y-8 text-neutral-600 font-light leading-relaxed text-lg text-left max-w-3xl mx-auto">
+                <p>For most of my life, I’ve operated in high-pressure environments — from representing India at the Asian Games to working at Google, where systems, clarity, and structured thinking drive every decision.</p>
+                <p>When I stepped deeper into real estate, I was surprised. People were committing significant capital with confusion. Advice varied depending on who you spoke to. There was urgency everywhere — but very little accountability.</p>
+                <p>It didn’t align with how I make decisions.</p>
+                <p className="italic text-[#1a1a1a] font-medium border-l-4 border-[#c5a059] pl-6">Real estate is not a small transaction. It is capital allocation. It is legacy. It is long-term wealth creation.</p>
+                <p>So instead of adapting to the noise, I decided to build differently — with structure, logic, alignment, and complete transparency at the core.</p>
+                
+                <div className="pt-12 flex items-center gap-8">
+                  <div className="bg-[#1a1a1a] p-8 text-white border border-white/5">
+                    <h4 className="text-xl font-bold serif mb-1 text-[#c5a059]">Tejas Dhingra</h4>
+                    <p className="text-[8px] tracking-[0.3em] font-bold uppercase opacity-50">Founder | Google Alumnus | Asian Games Athlete</p>
                   </div>
-                  
-                  <div className="pt-12 inline-block bg-[#1a1a1a] p-12 text-white border border-white/5 text-left">
-                    <h4 className="text-2xl font-bold serif mb-2 text-[#c5a059]">Tejas Dhingra</h4>
-                    <p className="text-[9px] tracking-[0.3em] font-bold uppercase opacity-50 mb-4">Founder | Google Alumnus | Asian Games Athlete</p>
-                    <div className="w-12 h-px bg-[#c5a059]"></div>
+                  <div className="text-left">
+                    <p className="text-[10px] uppercase font-bold tracking-widest text-neutral-400 mb-2">Mentored by</p>
+                    <p className="text-sm font-bold text-[#1a1a1a]">Mr. Vishal Gupta</p>
+                    <p className="text-[9px] uppercase tracking-widest text-neutral-500">MD, Ashiana Housing</p>
                   </div>
                 </div>
              </div>

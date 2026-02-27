@@ -30,10 +30,6 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property, onSelect }) => {
                <p className="text-[#c5a059] text-[9px] font-bold tracking-[0.3em] uppercase mb-2 italic">Institutional Grade</p>
                <h3 className="text-4xl font-bold serif text-white leading-tight">{property.name}</h3>
              </div>
-             <div className="text-right">
-               <p className="text-white/50 text-[8px] uppercase tracking-widest mb-1">Target CAGR</p>
-               <p className="text-[#c5a059] text-xl font-bold serif">{property.expectedCAGR}%</p>
-             </div>
            </div>
         </div>
       </div>
@@ -45,11 +41,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property, onSelect }) => {
           <span className="text-[#1a1a1a] font-bold text-sm tracking-tight">{property.price}</span>
         </div>
         
-        <div className="grid grid-cols-2 gap-4 mb-8">
-          <div className="p-4 bg-neutral-50 border border-neutral-100">
-            <p className="text-[8px] text-neutral-400 uppercase tracking-widest mb-1">Risk Profile</p>
-            <p className="text-[10px] font-bold uppercase">{property.riskRating}</p>
-          </div>
+        <div className="grid grid-cols-1 gap-4 mb-8">
           <div className="p-4 bg-neutral-50 border border-neutral-100">
             <p className="text-[8px] text-neutral-400 uppercase tracking-widest mb-1">Entry Value</p>
             <p className="text-[10px] font-bold uppercase">₹{property.pricePerSqFt}/ft²</p>
@@ -57,7 +49,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property, onSelect }) => {
         </div>
 
         <button className="w-full py-5 text-[10px] font-bold tracking-[0.5em] border border-[#1a1a1a] text-[#1a1a1a] uppercase group-hover:bg-[#1a1a1a] group-hover:text-white transition-all duration-300">
-          Request Investment Deck
+          View More
         </button>
       </div>
     </div>

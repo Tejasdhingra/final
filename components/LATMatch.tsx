@@ -127,8 +127,13 @@ const LATMatch: React.FC<LATMatchProps> = ({ isOpen, onClose }) => {
       <div className="flex-1 max-w-4xl mx-auto w-full py-20 px-4">
         {!showLeadForm ? (
           <div className="animate-in slide-in-from-bottom-12 duration-700">
+            <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-[#c5a059] mb-4 block">LAT Match™</span>
+            <h2 className="text-4xl md:text-6xl font-bold serif mb-8 leading-tight">Property Alignment Framework</h2>
+            <p className="text-neutral-400 text-sm font-light mb-16 max-w-2xl leading-relaxed">
+              LAT Match is our structured property alignment framework that matches your capital, time horizon, and wealth objectives with the right opportunity — removing guesswork and emotional bias.
+            </p>
             <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-[#c5a059] mb-4 block">Step {step + 1} of {STEPS.length}</span>
-            <h2 className="text-4xl md:text-6xl font-bold serif mb-16 leading-tight">{STEPS[step].question}</h2>
+            <h3 className="text-3xl md:text-4xl font-bold serif mb-12 leading-tight">{STEPS[step].question}</h3>
             <div className="grid md:grid-cols-1 gap-4">
               {STEPS[step].options.map((opt) => (
                 <button
@@ -201,14 +206,10 @@ const LATMatch: React.FC<LATMatchProps> = ({ isOpen, onClose }) => {
                     <h3 className="text-3xl font-bold serif mb-2">{p.name}</h3>
                     <p className="text-xs text-neutral-400 mb-8 uppercase tracking-widest">{p.location}</p>
                     
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-10 pb-8 border-b border-white/5">
+                    <div className="grid grid-cols-2 md:grid-cols-2 gap-6 mb-10 pb-8 border-b border-white/5">
                       <div>
                         <p className="text-[8px] text-neutral-500 uppercase tracking-widest mb-1">Expected Yield</p>
                         <p className="text-sm font-bold">{p.expectedYield}% p.a.</p>
-                      </div>
-                      <div>
-                        <p className="text-[8px] text-neutral-500 uppercase tracking-widest mb-1">Liquidity</p>
-                        <p className="text-sm font-bold">{p.exitLiquidityScore}/10</p>
                       </div>
                       <div>
                         <p className="text-[8px] text-neutral-500 uppercase tracking-widest mb-1">Entry Price</p>
