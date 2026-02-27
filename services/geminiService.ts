@@ -1,44 +1,57 @@
 
 import { GoogleGenAI } from "@google/genai";
+import { CompassAnswers, Property } from "../types";
+
+const getApiKey = () => {
+  try {
+    return process.env.API_KEY || "";
+  } catch (e) {
+    return "";
+  }
+};
 
 export async function searchProperties(query: string) {
-  try {
-    // Robust check for API Key in various environments
-    let apiKey = "";
-    try {
-      apiKey = process.env.API_KEY || "";
-    } catch (e) {
-      // If process is not defined, we might be in a raw browser environment
-      console.warn("LATITUDE: Process environment not found, looking for alternative key injection.");
-    }
-    
-    if (!apiKey) {
-      console.error("LATITUDE: API_KEY is missing.");
-      return { 
-        text: "The intelligence engine is currently initializing. If you are the owner, please ensure the API_KEY is set in your Netlify Environment Variables.", 
-        sources: [] 
-      };
-    }
+  const apiKey = getApiKey();
+  if (!apiKey) return { text: "Intelligence engine offline.", sources: [] };
 
+  try {
     const ai = new GoogleGenAI({ apiKey });
-    
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
-      contents: `Search for premium real estate properties in Delhi NCR based on: "${query}". Provide a concise summary of top developments, current market sentiment, and typical price ranges. Focus on trust and quality.`,
-      config: {
-        tools: [{ googleSearch: {} }],
-      },
+      contents: `Search for premium real estate properties in Delhi NCR based on: "${query}". Focus on high-end advisory perspective.`,
+      config: { tools: [{ googleSearch: {} }] },
     });
-
     return {
-      text: response.text || "No specific details found for this query. Please try a different sector or project name.",
+      text: response.text || "No results.",
       sources: response.candidates?.[0]?.groundingMetadata?.groundingChunks || []
     };
   } catch (error) {
-    console.error("Gemini search failed:", error);
-    return {
-      text: "Our intelligence engine is currently experiencing high demand. Please try again in a few moments.",
-      sources: []
-    };
+    return { text: "Engine offline.", sources: [] };
+  }
+}
+
+export async function generateCompassInsight(answers: CompassAnswers, matchedProperty: Property) {
+  const apiKey = getApiKey();
+  if (!apiKey) return "Our investment strategists recommend focusing on emerging high-growth corridors.";
+
+  try {
+    const ai = new GoogleGenAI({ apiKey });
+    const response = await ai.models.generateContent({
+      model: "gemini-3-flash-preview",
+      contents: `ACT AS A SENIOR REAL ESTATE STRATEGIST.
+      Client Profile:
+      - Intent: ${answers.intent}
+      - Budget: ${answers.budget}
+      - Asset Preference: ${answers.assetType}
+      - Hold Period: ${answers.holdingPeriod}
+      - Risk: ${answers.riskAppetite}
+      
+      Match Recommendation: ${matchedProperty.name} in ${matchedProperty.location}.
+      
+      Generate a professional, sophisticated 3-sentence investment insight explaining why this asset fits their profile. Mention market momentum and corridor potential.`,
+    });
+    return response.text;
+  } catch (error) {
+    return "Strategic allocation in high-growth corridors is advised for this profile.";
   }
 }

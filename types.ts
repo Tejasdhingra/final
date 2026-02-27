@@ -24,6 +24,14 @@ export interface Property {
   amenities?: string[];
   locationAdvantages?: string[];
   priceEstimates?: { type: string; size: string; estimate: string }[];
+  // LAT Compass Metadata
+  ticketSizeCr: number;
+  expectedYield: number; // percentage
+  expectedCAGR: number; // percentage
+  riskRating: 'Conservative' | 'Balanced' | 'Aggressive';
+  exitLiquidityScore: number; // 1-10
+  pricePerSqFt: number;
+  marketMomentumScore: number; // 1-10
 }
 
 export interface Testimonial {
@@ -43,4 +51,12 @@ export interface Service {
   title: string;
   description: string;
   icon: string;
+}
+
+export interface CompassAnswers {
+  intent: string;
+  budget: string;
+  assetType: string;
+  holdingPeriod: string;
+  riskAppetite: string;
 }
