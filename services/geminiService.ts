@@ -1,6 +1,6 @@
 
 import { GoogleGenAI } from "@google/genai";
-import { CompassAnswers, Property } from "../types";
+import { MatchAnswers, Property } from "../types";
 
 const getApiKey = () => {
   try {
@@ -30,7 +30,7 @@ export async function searchProperties(query: string) {
   }
 }
 
-export async function generateCompassInsight(answers: CompassAnswers, matchedProperty: Property) {
+export async function generateMatchInsight(answers: MatchAnswers, matchedProperty: Property) {
   const apiKey = getApiKey();
   if (!apiKey) return "Our investment strategists recommend focusing on emerging high-growth corridors.";
 
@@ -44,7 +44,6 @@ export async function generateCompassInsight(answers: CompassAnswers, matchedPro
       - Budget: ${answers.budget}
       - Asset Preference: ${answers.assetType}
       - Hold Period: ${answers.holdingPeriod}
-      - Risk: ${answers.riskAppetite}
       
       Match Recommendation: ${matchedProperty.name} in ${matchedProperty.location}.
       
