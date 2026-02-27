@@ -30,6 +30,8 @@ export interface Property {
   exitLiquidityScore: number; // 1-10
   pricePerSqFt: number;
   marketMomentumScore: number; // 1-10
+  expectedCAGR?: number;
+  riskRating?: string;
 }
 
 export interface Testimonial {
