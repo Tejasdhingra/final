@@ -1,17 +1,17 @@
 
 import React, { useState } from 'react';
-import LATCompass from './LATCompass';
+import LATMatch from './LATMatch';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isCompassOpen, setIsCompassOpen] = useState(false);
+  const [isMatchOpen, setIsMatchOpen] = useState(false);
 
   const navLinks = [
-    { name: 'Portfolio', href: '#search' },
-    { name: 'NRI Advisory', href: '#nri' },
+    { name: 'Buy', href: '#search' },
     { name: 'Sell', href: '#showcase' },
+    { name: 'Valuation', href: '#lestimate' },
+    { name: 'NRI Desk', href: '#nri' },
     { name: 'About', href: '#about' },
-    { name: 'Contact', href: '#contact-form' },
   ];
 
   const contactPhone = "+919811199432";
@@ -42,10 +42,10 @@ const Navbar: React.FC = () => {
               
               <div className="flex items-center space-x-3">
                 <button
-                  onClick={() => setIsCompassOpen(true)}
+                  onClick={() => setIsMatchOpen(true)}
                   className="group flex items-center space-x-2 bg-[#1a1a1a] border border-[#1a1a1a] px-5 py-2.5 transition-all hover:bg-white"
                 >
-                  <span className="text-[9px] font-bold tracking-[0.2em] text-[#c5a059] uppercase transition-colors">TRY LAT COMPASS™</span>
+                  <span className="text-[9px] font-bold tracking-[0.2em] text-[#c5a059] uppercase transition-colors">TRY LAT MATCH™</span>
                 </button>
 
                 <a
@@ -87,14 +87,14 @@ const Navbar: React.FC = () => {
               </a>
             ))}
             <div className="pt-4 flex flex-col space-y-3">
-              <button onClick={() => { setIsOpen(false); setIsCompassOpen(true); }} className="text-xs font-bold tracking-[0.2em] text-[#c5a059] uppercase text-left">LAT Compass™</button>
+              <button onClick={() => { setIsOpen(false); setIsMatchOpen(true); }} className="text-xs font-bold tracking-[0.2em] text-[#c5a059] uppercase text-left">LAT Match™</button>
               <a href={`https://wa.me/${contactPhone.replace('+', '')}`} className="text-xs font-bold tracking-[0.2em] text-[#c5a059] uppercase">Connect on WhatsApp</a>
             </div>
           </div>
         )}
       </nav>
 
-      <LATCompass isOpen={isCompassOpen} onClose={() => setIsCompassOpen(false)} />
+      <LATMatch isOpen={isMatchOpen} onClose={() => setIsMatchOpen(false)} />
     </>
   );
 };
